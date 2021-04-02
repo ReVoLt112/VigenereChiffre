@@ -85,6 +85,8 @@ namespace VigenereChiffre
                     }
                 }
                 args.Result = geheimtext;
+                geheimtext = String.Empty;
+                klartext = String.Empty;
             });
             // what to do when progress changed (update the progress bar for example)
             bw.ProgressChanged += new ProgressChangedEventHandler(
@@ -105,6 +107,7 @@ namespace VigenereChiffre
                 tbChiffre.Text = Convert.ToString(args.Result);
             });
             bw.RunWorkerAsync();
+            bw.Dispose();
         }
 
         private void decrypt(string schluessel, string geheimtext)
@@ -140,6 +143,8 @@ namespace VigenereChiffre
                     }
                 }
                 args.Result = klartext;
+                klartext = String.Empty;
+                geheimtext = String.Empty;
             });
             // what to do when progress changed (update the progress bar for example)
             bw.ProgressChanged += new ProgressChangedEventHandler(
@@ -160,6 +165,7 @@ namespace VigenereChiffre
             });
 
             bw.RunWorkerAsync();
+            bw.Dispose();
         }
 
         private void btnGo_Click(object sender, EventArgs e)
